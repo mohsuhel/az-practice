@@ -38,7 +38,10 @@ az network nsg rule  create -g ${RG} -nsg-name ${RG}_NSG1 -n ${RG}_NSG1_RULE1 --
 
 #create Linux Virtula Machine 
 
-IMAGE ='Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:20.04.202211030'
+#IMAGE ='Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:20.04.202211030' - this image is unable to find
+
+IMAGE='Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest'
+
 az vm create -g ${RG}  -n testlinuxvm01 --image ${IMAGE} --vnet-name ${RG} -vNET1 \
     --subnet ${RG} -subnet-1 --admin-username suhel --adminpassword "mohammed@2298" \
     --size Standard_B1s --storage-sku StandardSSD_LRS --private-ip-address 10.30.1.100 --nsg ${RG}_NSG1 
